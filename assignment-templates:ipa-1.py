@@ -36,8 +36,7 @@ in centavos
 taxes and expenses
     '''
     # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The 
-function should return your answer.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
     final_pay=int(gross_pay-(tax_rate*gross_pay)-expenses)
     return final_pay
 
@@ -80,10 +79,8 @@ between the number and the unit.
 "10kg").
     '''
     # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The 
-function should return your answer.
-    return 
-str(total_material-(num_jobs*job_consumption))+str(material_units)
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
+    return str(total_material-(num_jobs*job_consumption))+str(material_units)
 
 def interest(principal, rate, periods):
     '''Interest.
@@ -115,8 +112,7 @@ representation of a percentage (e.g., 3% is 0.03)
         the final value of the investment
     '''
     # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The 
-function should return your answer.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
     return int(principal+(principal*rate*periods))
 
 def body_mass_index(weight, height):
@@ -153,8 +149,7 @@ system.
         the BMI of the person.
     '''
     # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The 
-function should return your answer.
+    # Stay within the function. Only use the parameters as input. The function should return your answer.
     weight_kg=weight*0.453592
     height_in=(height[0]*12)+height[1]
     height_meters=0.0254*height_in
