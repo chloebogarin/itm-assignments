@@ -37,8 +37,8 @@ taxes and expenses
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    final_pay=int(gross_pay-(tax_rate*gross_pay)-expenses)
-    return final_pay
+    final_pay=(gross_pay-int(tax_rate*gross_pay))-expenses
+    return int(final_pay)
 
 def material_waste(total_material, material_units, num_jobs, 
 job_consumption):
