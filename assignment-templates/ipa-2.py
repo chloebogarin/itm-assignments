@@ -37,9 +37,12 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    letter = letter.upper()
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    return alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
+    if letter == " ":
+        return " "
+    else:
+        letter = letter.upper()
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -64,6 +67,9 @@ def caesar_cipher(message, shift):
     result = "" 
     message = message.upper()
     for char in message:   
+        if char == " ":
+            result += " "
+        if char.isalpha():
             alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             shifted_char = alphabet[((alphabet.index(char)+shift)%len(alphabet))]
             result += shifted_char
@@ -97,11 +103,14 @@ def shift_by_letter(letter, letter_shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    letter = letter.capitalize()
-    letter_shift = letter_shift.capitalize()
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    shift = alphabet.index(letter_shift)
-    return alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
+    if letter == " ":
+        return " "
+    else:
+        letter = letter.capitalize()
+        letter_shift = letter_shift.capitalize()
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        shift = alphabet.index(letter_shift)
+        return alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -134,16 +143,21 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    message = message.upper()
-    key = key.upper()
+    message = str(message.upper())
+    key = str(key.upper())
     index_key = 0
     shifted_message = ""
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if message == "":
+        return ""
     for letter in message:
-        shift = alphabet.index(key[index_key%len(key)])
-        shifted_letter = alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
-        shifted_message += shifted_letter
-        index_key += 1
+        if letter == " ":
+            shifted_message += " "
+        if letter.isalpha():
+            shift = alphabet.index(key[index_key%len(key)])
+            shifted_letter = alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
+            shifted_message += shifted_letter
+            index_key += 1
     return shifted_message
 
 def scytale_cipher(message, shift):
@@ -236,6 +250,6 @@ def scytale_decipher(message, shift):
     og_message = ""
     og_shift = len(ciphertext)//shift
     for i in range (len(ciphertext)):
-        og_index = (i//og_shift) + (len(ciphertext)//og_shift) * (i%og_shift)
+        og_index = (i//og_shift) + ((len(ciphertext)//og_shift) * (i%og_shift))
         og_message += ciphertext[og_index]
     return og_message
