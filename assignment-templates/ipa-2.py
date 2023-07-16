@@ -143,22 +143,23 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    message = str(message.upper())
-    key = str(key.upper())
-    index_key = 0
-    shifted_message = ""
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    if message == "":
-        return ""
-    for letter in message:
-        if letter == " ":
-            shifted_message += " "
+    final_message = ""
+    key_index = 0
+    while len(message) > len(key):
+        key += key
+            
+        key = key[0:len(message)]
+
+    for key_index,letter in enumerate(message):
         if letter.isalpha():
-            shift = alphabet.index(key[index_key%len(key)])
-            shifted_letter = alphabet[(alphabet.index(letter)+shift)%len(alphabet)]
-            shifted_message += shifted_letter
-            index_key += 1
-    return shifted_message
+            index = alphabet.index(letter)
+            key_index_final = alphabet.index(key[key_index])
+            shifted_index = (index + key_index_final) % len(alphabet)
+            final_message += alphabet[shifted_index]
+        else:
+            final_message += " "
+    return final_message
 
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -248,8 +249,9 @@ def scytale_decipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     og_message = ""
-    og_shift = len(ciphertext)//shift
-    for i in range (len(ciphertext)):
-        og_index = (i//og_shift) + ((len(ciphertext)//og_shift) * (i%og_shift))
-        og_message += ciphertext[og_index]
+    new_shift = len(message)//shift
+    for i in range(len(message)):
+        new_index = (i // new_shift) + (len(message) // new_shift) * (i % new_shift)
+        og_message += message[new_index]
+
     return og_message
