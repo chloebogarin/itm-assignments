@@ -83,23 +83,26 @@ def tic_tac_toe(board):
     try:
         size = len(board)
         for row in board:
-            if len(set(row)) == 1:
-                return row[0]
-        
+            if len(set(row))==1:
+                if row[0]=="":
+                    return "No winner"
+                else:
+                    return row[0]
         for column in range(size):
-            col_value = [board[row][column] for row in range(size)]
-            if len(set(col_value)) == 1:
-                return col_value[0]
-        
+            col_value = [board[row][column]for row in range(size)]
+            if len(set(col_value))==1:
+                if col_value[0] == "":
+                    return "No winner"
+                else:
+                    return col_value[0]
         first_diagonal = [board[x][x] for x in range(size)]
-        second_diagonal = [board[x][size - x - 1] for x in range(size)]
-        
-        if len(set(first_diagonal)) == 1:
+        second_diagonal = [board[x][size-x-1] for x in range(size)]
+        if len(set(first_diagonal))==1:
             return first_diagonal[0]
-        elif len(set(second_diagonal)) == 1:
+        elif len(set(second_diagonal))==1:
             return second_diagonal[0]
         else:
-            return "No winner"
+            return "No winner" 
     
     except IndexError:
         return "Invalid board size or structure"
